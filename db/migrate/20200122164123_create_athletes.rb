@@ -5,6 +5,7 @@ class CreateAthletes < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.string :email
       t.string :password_digest
+      t.string :account_type, :null => false, :default => 'athlete'
       t.references :coach, foreign_key: true 
       t.references :affiliate, foreign_key: true
 

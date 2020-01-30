@@ -35,7 +35,7 @@ pullup = Movement.create(name: "Pull Up", description: "", skill_level: "Beginne
 
 
 #  Affiliate Seeds
-hq = Affiliate.create(name: "HealthQuota", location: "Mies", password: "healthquota")
+hq = Affiliate.create(name: "HealthQuota", email: "healthquota@gmail.com", location: "Mies", password: "healthquota")
 
 # Coach Seeds
 faris = Coach.create(first_name: "Faris", last_name: "Aziz", email: "farisaziz12@gmail.com", password: "faziz", affiliate: hq)

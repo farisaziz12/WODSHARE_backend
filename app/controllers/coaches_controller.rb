@@ -1,10 +1,10 @@
-class AthletesController < ApplicationController
+class CoachesController < ApplicationController
     def login
-        athlete = Athlete.find_by(email: params[:email])
-        if athlete && athlete.authenticate(params[:password])
-          render json: athlete
+        coach = Coach.find_by(email: params[:email])
+        if coach && coach.authenticate(params[:password])
+          render json: coach
 
-          { token: issue_token({ id: athlete.id, account_type: athlete.account_type }), athlete: athlete }
+          { token: issue_token({ id: coach.id, account_type: coach.account_type }), coach: coach }
         else
           render json: { error: "Email/password combination is invalid." }, status: 401
         end
@@ -17,5 +17,4 @@ class AthletesController < ApplicationController
             render json: { errors: ["Not Logged in"] }, status: :not_acceptable
         end
     end
-
 end

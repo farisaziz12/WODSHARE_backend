@@ -17,7 +17,11 @@ class ApplicationController < ActionController::API
         token = get_token
         if token
             decoded_token = decode_token(token)
-            @current_user = Athlete.find(decoded_token["athlete_id"])
+            if decoded_token["account_type"] == "athlete"
+                @current_user = Athlete.find(decoded_token["athlete_id"])
+            elsif decoded_token["account_type"] == "coach"
+                @current_user = Coach.find(decoded_token["coach_id"])
+            end
         else 
             @current_user = nil
         end

@@ -9947,3 +9947,232 @@ Processing by AthletesController#validate as */*
 Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 965)
 
 
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (78.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "WODSHARE_backend_development"[0m
+  [1m[35m (44.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "WODSHARE_backend_test"[0m
+  [1m[35m (258.3ms)[0m  [1m[35mCREATE DATABASE "WODSHARE_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (95.0ms)[0m  [1m[35mCREATE DATABASE "WODSHARE_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (25.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6842029569302036655)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMovements (20200122163955)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "movements" ("id" bigserial primary key, "name" character varying, "description" character varying, "skill_level" character varying, "category" character varying, "scale_option_id" integer, "muscle_group" character varying, "avoid_if_injured" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200122163955"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAffiliates (20200122164013)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "affiliates" ("id" bigserial primary key, "name" character varying, "email" character varying, "location" character varying, "password_digest" character varying, "account_type" character varying DEFAULT 'affiliate' NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200122164013"]]
+  [1m[35m (13.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCoaches (20200122164031)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "coaches" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "account_type" character varying DEFAULT 'coach' NOT NULL, "affiliate_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200122164031"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAthletes (20200122164123)
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "athletes" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "account_type" character varying DEFAULT 'athlete' NOT NULL, "coach_id" bigint, "affiliate_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_2f27ec0708"
+FOREIGN KEY ("coach_id")
+  REFERENCES "coaches" ("id")
+, CONSTRAINT "fk_rails_e877765c29"
+FOREIGN KEY ("affiliate_id")
+  REFERENCES "affiliates" ("id")
+)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_athletes_on_coach_id" ON "athletes"  ("coach_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_athletes_on_affiliate_id" ON "athletes"  ("affiliate_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200122164123"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateWorkouts (20200122213621)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "workouts" ("id" bigserial primary key, "name" character varying, "wod_type" character varying, "category" character varying, "score" character varying, "date" date, "rep_scheme" character varying, "coach_id" bigint, "athlete_id" bigint, "affiliate_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_0312582f7b"
+FOREIGN KEY ("coach_id")
+  REFERENCES "coaches" ("id")
+, CONSTRAINT "fk_rails_091d7b776c"
+FOREIGN KEY ("athlete_id")
+  REFERENCES "athletes" ("id")
+, CONSTRAINT "fk_rails_ff42b334be"
+FOREIGN KEY ("affiliate_id")
+  REFERENCES "affiliates" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_workouts_on_coach_id" ON "workouts"  ("coach_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_workouts_on_athlete_id" ON "workouts"  ("athlete_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_workouts_on_affiliate_id" ON "workouts"  ("affiliate_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200122213621"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateInjuries (20200122214124)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "injuries" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200122214124"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMovementInjuries (20200122214158)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "movement_injuries" ("id" bigserial primary key, "movement_id" bigint NOT NULL, "injury_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c26bf8cef6"
+FOREIGN KEY ("movement_id")
+  REFERENCES "movements" ("id")
+, CONSTRAINT "fk_rails_9e3e7d6d95"
+FOREIGN KEY ("injury_id")
+  REFERENCES "injuries" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_movement_injuries_on_movement_id" ON "movement_injuries"  ("movement_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_movement_injuries_on_injury_id" ON "movement_injuries"  ("injury_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200122214158"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateWorkoutMovements (20200122214504)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "workout_movements" ("id" bigserial primary key, "workout_id" bigint NOT NULL, "movement_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f87ec5e073"
+FOREIGN KEY ("workout_id")
+  REFERENCES "workouts" ("id")
+, CONSTRAINT "fk_rails_70662e1104"
+FOREIGN KEY ("movement_id")
+  REFERENCES "movements" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_workout_movements_on_workout_id" ON "workout_movements"  ("workout_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_workout_movements_on_movement_id" ON "workout_movements"  ("movement_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200122214504"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateHealthData (20200128132327)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "health_data" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200128132327"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-01-30 09:39:33.972686"], ["updated_at", "2020-01-30 09:39:33.972686"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6842029569302036655)[0m
+  [1m[35m (9.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.9ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Push-up"], ["description", ""], ["skill_level", "Beginner"], ["category", "Bodyweight"], ["muscle_group", "Full Body"], ["created_at", "2020-01-30 09:39:38.924733"], ["updated_at", "2020-01-30 09:39:38.924733"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Burpee"], ["description", ""], ["skill_level", "Beginner"], ["category", "Bodyweight"], ["scale_option_id", 1], ["muscle_group", "Full Body"], ["created_at", "2020-01-30 09:39:38.929107"], ["updated_at", "2020-01-30 09:39:38.929107"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Air Squat"], ["description", ""], ["skill_level", "Beginner"], ["category", "Bodyweight"], ["muscle_group", "Lower Body"], ["created_at", "2020-01-30 09:39:38.933177"], ["updated_at", "2020-01-30 09:39:38.933177"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "DB Snatch"], ["description", ""], ["skill_level", "Intermediate"], ["category", "Weightlifting"], ["scale_option_id", 2], ["muscle_group", "Full Body"], ["created_at", "2020-01-30 09:39:38.935981"], ["updated_at", "2020-01-30 09:39:38.935981"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Backsquat"], ["description", ""], ["skill_level", "Intermediate"], ["category", "Weightlifting"], ["scale_option_id", 3], ["muscle_group", "Posterior Chain"], ["created_at", "2020-01-30 09:39:38.938889"], ["updated_at", "2020-01-30 09:39:38.938889"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Frontsquat"], ["description", ""], ["skill_level", "Intermediate"], ["category", "Weightlifting"], ["scale_option_id", 3], ["muscle_group", "Lower Body"], ["created_at", "2020-01-30 09:39:38.941874"], ["updated_at", "2020-01-30 09:39:38.941874"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.4ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Overhead Squat"], ["description", ""], ["skill_level", "Intermediate"], ["category", "Weightlifting"], ["scale_option_id", 3], ["muscle_group", "Full Body"], ["created_at", "2020-01-30 09:39:38.945049"], ["updated_at", "2020-01-30 09:39:38.945049"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Strict Press"], ["description", ""], ["skill_level", "Beginner"], ["category", "Weightlifting"], ["scale_option_id", 1], ["muscle_group", "Upper Body"], ["created_at", "2020-01-30 09:39:38.948741"], ["updated_at", "2020-01-30 09:39:38.948741"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Push Press"], ["description", ""], ["skill_level", "Intermediate"], ["category", "Weightlifting"], ["scale_option_id", 1], ["muscle_group", "Upper Body"], ["created_at", "2020-01-30 09:39:38.952762"], ["updated_at", "2020-01-30 09:39:38.952762"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Push Jerk"], ["description", ""], ["skill_level", "Advanced"], ["category", "Weightlifting"], ["scale_option_id", 1], ["muscle_group", "Upper Body"], ["created_at", "2020-01-30 09:39:38.956860"], ["updated_at", "2020-01-30 09:39:38.956860"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Split Jerk"], ["description", ""], ["skill_level", "Advanced"], ["category", "Weightlifting"], ["scale_option_id", 1], ["muscle_group", "Upper Body"], ["created_at", "2020-01-30 09:39:38.960329"], ["updated_at", "2020-01-30 09:39:38.960329"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Muscle Snatch"], ["description", ""], ["skill_level", "Intermediate"], ["category", "Powerlifting"], ["scale_option_id", 4], ["muscle_group", "Upper Body"], ["created_at", "2020-01-30 09:39:38.963228"], ["updated_at", "2020-01-30 09:39:38.963228"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Power Snatch"], ["description", ""], ["skill_level", "Intermediate"], ["category", "Powerlifting"], ["scale_option_id", 4], ["muscle_group", "Full Body"], ["created_at", "2020-01-30 09:39:38.966279"], ["updated_at", "2020-01-30 09:39:38.966279"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Squat Snatch"], ["description", ""], ["skill_level", "Advanced"], ["category", "Powerlifting"], ["scale_option_id", 4], ["muscle_group", "Full Body"], ["created_at", "2020-01-30 09:39:38.969345"], ["updated_at", "2020-01-30 09:39:38.969345"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "scale_option_id", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Thruster"], ["description", ""], ["skill_level", "Intermediate"], ["category", "Weightlifting"], ["scale_option_id", 3], ["muscle_group", "Full Body"], ["created_at", "2020-01-30 09:39:38.972564"], ["updated_at", "2020-01-30 09:39:38.972564"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovement Create (0.3ms)[0m  [1m[32mINSERT INTO "movements" ("name", "description", "skill_level", "category", "muscle_group", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Pull Up"], ["description", ""], ["skill_level", "Beginner"], ["category", "Gymnastics"], ["muscle_group", "Upper Body"], ["created_at", "2020-01-30 09:39:38.976753"], ["updated_at", "2020-01-30 09:39:38.976753"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAffiliate Create (0.6ms)[0m  [1m[32mINSERT INTO "affiliates" ("name", "email", "location", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "HealthQuota"], ["email", "healthquota@gmail.com"], ["location", "Mies"], ["password_digest", "$2a$12$NfLze32.1k9yurKBnyDs1e1mOLeGOIVUW7vLl37bNa9IUzrsm8pqu"], ["created_at", "2020-01-30 09:39:39.206142"], ["updated_at", "2020-01-30 09:39:39.206142"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCoach Create (0.6ms)[0m  [1m[32mINSERT INTO "coaches" ("first_name", "last_name", "email", "password_digest", "affiliate_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Faris"], ["last_name", "Aziz"], ["email", "farisaziz12@gmail.com"], ["password_digest", "$2a$12$E846p5v/PNc3Ir3jmyTxAOVvGbp6IjK0l6aJ3a7yDd3T5nP/yK8jK"], ["affiliate_id", 1], ["created_at", "2020-01-30 09:39:39.441717"], ["updated_at", "2020-01-30 09:39:39.441717"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAthlete Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "john@gmail.com"], ["LIMIT", 1]]
+  [1m[36mAthlete Create (7.9ms)[0m  [1m[32mINSERT INTO "athletes" ("first_name", "last_name", "email", "password_digest", "coach_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Smith"], ["email", "john@gmail.com"], ["password_digest", "$2a$12$eBqVjGtbhqR8i7FDOWXA.O7W0Gr5vLkKfLRHjm08M3sJFn/21fnW6"], ["coach_id", 1], ["created_at", "2020-01-30 09:39:39.676907"], ["updated_at", "2020-01-30 09:39:39.676907"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWorkout Create (1.5ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "wod_type", "category", "score", "date", "rep_scheme", "coach_id", "athlete_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Fran"], ["wod_type", "Couplet"], ["category", "Weightlifting"], ["score", "6:54"], ["date", "2020-01-30"], ["rep_scheme", "21-15-9"], ["coach_id", 1], ["athlete_id", 1], ["created_at", "2020-01-30 09:39:39.712641"], ["updated_at", "2020-01-30 09:39:39.712641"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWorkoutMovement Create (2.1ms)[0m  [1m[32mINSERT INTO "workout_movements" ("workout_id", "movement_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["workout_id", 1], ["movement_id", 15], ["created_at", "2020-01-30 09:39:39.729168"], ["updated_at", "2020-01-30 09:39:39.729168"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWorkoutMovement Create (0.4ms)[0m  [1m[32mINSERT INTO "workout_movements" ("workout_id", "movement_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["workout_id", 1], ["movement_id", 16], ["created_at", "2020-01-30 09:39:39.734988"], ["updated_at", "2020-01-30 09:39:39.734988"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/validate" for ::1 at 2020-01-30 09:45:11 +0000
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (2.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.84ms)
+Completed 200 OK in 101ms (Views: 41.1ms | ActiveRecord: 17.4ms | Allocations: 11288)
+
+
+Started GET "/athlete/login" for ::1 at 2020-01-30 10:55:31 +0000
+Started POST "/athlete/login" for ::1 at 2020-01-30 10:55:40 +0000
+Started POST "/athlete/login" for ::1 at 2020-01-30 10:55:43 +0000
+Started POST "/athlete/login" for ::1 at 2020-01-30 10:57:12 +0000
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"john@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"john@gmail.com"}}
+  [1m[36mAthlete Load (0.9ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "john@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+Completed 500 Internal Server Error in 39146ms (ActiveRecord: 19.2ms | Allocations: 50613)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `login'
+app/controllers/athletes_controller.rb:5:in `login'
+Started POST "/athlete/login" for ::1 at 2020-01-30 10:58:03 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"john@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"john@gmail.com"}}
+  [1m[36mAthlete Load (1.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "john@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (12.1ms)
+Completed 200 OK in 671ms (Views: 76.8ms | ActiveRecord: 16.0ms | Allocations: 1056006)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 10:58:29 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (15.86ms)
+Completed 200 OK in 107ms (Views: 31.7ms | ActiveRecord: 1.4ms | Allocations: 420076)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 10:58:31 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (55.52ms)
+Completed 200 OK in 182ms (Views: 119.3ms | ActiveRecord: 1.2ms | Allocations: 388591)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 10:58:33 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (18.95ms)
+Completed 200 OK in 91ms (Views: 32.8ms | ActiveRecord: 1.4ms | Allocations: 416439)
+
+
