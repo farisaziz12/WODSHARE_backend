@@ -17,4 +17,19 @@ class CoachesController < ApplicationController
             render json: { errors: ["Not Logged in"] }, status: :not_acceptable
         end
     end
+
+    def create
+        coach = Coach.create(user_params)
+        if coach.valid?
+          render json: coach
+        else
+            byebug
+          render json: {message: coach.errors.full_messages[0]}, status: :not_acceptable
+        end 
+    end
+
+
+    def user_params
+        params.require(:coach).permit(:email, :password, :first_name, :last_name)
+    end
 end

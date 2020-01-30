@@ -18,4 +18,20 @@ class AthletesController < ApplicationController
         end
     end
 
+
+    def create
+      athlete = Athlete.create(user_params)
+      if athlete.valid?
+        render json: athlete
+      else
+        render json: {message: athlete.errors.full_messages[0]}, status: :not_acceptable
+      end 
+    end
+
+    private
+
+    def user_params
+      params.require(:athlete).permit(:email, :password, :first_name, :last_name)
+    end
+
 end
