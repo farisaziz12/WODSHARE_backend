@@ -10,7 +10,15 @@ class AthletesController < ApplicationController
         end
       end
 
-      def validate
+    def workouts
+        if @current_user.workouts
+          render json: @current_user.workouts
+        else 
+          render json: { error: "No Workouts" }, status: 404
+        end
+    end
+
+    def validate
         if logged_in?
             render json: @current_user
         else

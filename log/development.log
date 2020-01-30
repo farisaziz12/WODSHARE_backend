@@ -11312,3 +11312,885 @@ Processing by AthletesController#create as JSON
 Completed 406 Not Acceptable in 452ms (Views: 6.8ms | ActiveRecord: 8.6ms | Allocations: 1510914)
 
 
+Started POST "/athletes" for ::1 at 2020-01-30 19:16:52 +0000
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AthletesController#create as JSON
+  Parameters: {"athlete"=>{"first_name"=>"test2", "last_name"=>"test2", "password"=>"[FILTERED]", "email"=>"test2"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "test2"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Create (2.4ms)[0m  [1m[32mINSERT INTO "athletes" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "test2"], ["last_name", "test2"], ["email", "test2"], ["password_digest", "$2a$12$4.d5U8y5gzApL3FTbqDU9Oy5EFw5TCHLXSVRC1KqUNXxo0o6Ozz6e"], ["created_at", "2020-01-30 19:16:53.193869"], ["updated_at", "2020-01-30 19:16:53.193869"]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 AND "athletes"."id" != $2 LIMIT $3[0m  [["email", "test2"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:24:in `create'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (1.05ms)
+Completed 200 OK in 260ms (Views: 11.2ms | ActiveRecord: 12.2ms | Allocations: 13276)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:17:09 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 1184)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:17:11 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 1008)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:17:30 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 1.4ms | Allocations: 1008)
+
+
+Started POST "/athletes" for ::1 at 2020-01-30 19:18:17 +0000
+Processing by AthletesController#create as JSON
+  Parameters: {"athlete"=>{"first_name"=>"test3", "last_name"=>"test3", "password"=>"[FILTERED]", "email"=>"test3"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "test3"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Create (6.4ms)[0m  [1m[32mINSERT INTO "athletes" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "test3"], ["last_name", "test3"], ["email", "test3"], ["password_digest", "$2a$12$/JyL2D.Mk0ILE5r3PYRwdOLAv6rWBR4c.BLngnrd.ZG20F4z71k1m"], ["created_at", "2020-01-30 19:18:17.454128"], ["updated_at", "2020-01-30 19:18:17.454128"]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 AND "athletes"."id" != $2 LIMIT $3[0m  [["email", "test3"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:24:in `create'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 229ms (Views: 0.8ms | ActiveRecord: 7.9ms | Allocations: 4557)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:18:44 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 1.5ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:18:46 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.61ms)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.5ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:18:50 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:19:29 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:19:31 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (3.7ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 3.7ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:19:42 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:19:43 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.7ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.65ms)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 1.7ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:19:46 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started POST "/athletes" for ::1 at 2020-01-30 19:20:09 +0000
+Processing by AthletesController#create as JSON
+  Parameters: {"athlete"=>{"first_name"=>"test4", "last_name"=>"test4", "password"=>"[FILTERED]", "email"=>"test4"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "test4"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Create (0.4ms)[0m  [1m[32mINSERT INTO "athletes" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "test4"], ["last_name", "test4"], ["email", "test4"], ["password_digest", "$2a$12$4Z67I3SuthheOFzJpQvVH.fnGk/VgKrMpqxSM1yINmgfo6ov4kt4i"], ["created_at", "2020-01-30 19:20:09.369604"], ["updated_at", "2020-01-30 19:20:09.369604"]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 AND "athletes"."id" != $2 LIMIT $3[0m  [["email", "test4"], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:24:in `create'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 229ms (Views: 0.9ms | ActiveRecord: 7.2ms | Allocations: 4542)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:20:23 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (45.96ms)
+Completed 200 OK in 48ms (Views: 46.4ms | ActiveRecord: 0.3ms | Allocations: 993)
+
+
+Started POST "/athletes" for ::1 at 2020-01-30 19:20:45 +0000
+Processing by AthletesController#create as JSON
+  Parameters: {"athlete"=>{"first_name"=>"test5", "last_name"=>"test5", "password"=>"[FILTERED]", "email"=>"test5"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "test5"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Create (6.4ms)[0m  [1m[32mINSERT INTO "athletes" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "test5"], ["last_name", "test5"], ["email", "test5"], ["password_digest", "$2a$12$LJcic/KqIuMulCPkjCi0EeueXLtSRqpoU.Ano2IbFI5F6gq8R.1Iy"], ["created_at", "2020-01-30 19:20:45.523237"], ["updated_at", "2020-01-30 19:20:45.523237"]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 AND "athletes"."id" != $2 LIMIT $3[0m  [["email", "test5"], ["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:24:in `create'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 232ms (Views: 0.7ms | ActiveRecord: 8.1ms | Allocations: 4537)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:21:31 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:21:50 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:22:00 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (3.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 3.5ms | Allocations: 990)
+
+
+Started POST "/athletes" for ::1 at 2020-01-30 19:22:17 +0000
+Processing by AthletesController#create as JSON
+  Parameters: {"athlete"=>{"first_name"=>"test6", "last_name"=>"test6", "password"=>"[FILTERED]", "email"=>"test6"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "test6"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Create (0.4ms)[0m  [1m[32mINSERT INTO "athletes" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "test6"], ["last_name", "test6"], ["email", "test6"], ["password_digest", "$2a$12$OX/8ZUoX0kdmhSwldKjfteJw2hG.2eTIC4wG4CUGgc/eKE7aFlW22"], ["created_at", "2020-01-30 19:22:17.319235"], ["updated_at", "2020-01-30 19:22:17.319235"]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 AND "athletes"."id" != $2 LIMIT $3[0m  [["email", "test6"], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:24:in `create'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 230ms (Views: 0.8ms | ActiveRecord: 6.8ms | Allocations: 4534)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:22:41 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 19:22:45 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (2.6ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 1.2ms | Allocations: 990)
+
+
+Started POST "/athletes" for ::1 at 2020-01-30 19:23:22 +0000
+Processing by AthletesController#create as JSON
+  Parameters: {"athlete"=>{"first_name"=>"test7", "last_name"=>"test7", "password"=>"[FILTERED]", "email"=>"test7"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "test7"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Create (0.4ms)[0m  [1m[32mINSERT INTO "athletes" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "test7"], ["last_name", "test7"], ["email", "test7"], ["password_digest", "$2a$12$zEvi3nrWI86mYj/6wWfA4.ZM5r0JdowFiAaJE6MJxVTEbRMSrHkG2"], ["created_at", "2020-01-30 19:23:23.027170"], ["updated_at", "2020-01-30 19:23:23.027170"]]
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `create'
+  [1m[36mAthlete Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "athletes" WHERE "athletes"."email" = $1 AND "athletes"."id" != $2 LIMIT $3[0m  [["email", "test7"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:24:in `create'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 278ms (Views: 0.7ms | ActiveRecord: 1.6ms | Allocations: 4534)
+
+
+Started POST "/athlete/login" for ::1 at 2020-01-30 19:23:47 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"test7", "password"=>"[FILTERED]", "athlete"=>{"email"=>"test7"}}
+  [1m[36mAthlete Load (1.7ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "test7"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 236ms (Views: 0.8ms | ActiveRecord: 1.7ms | Allocations: 1134)
+
+
+Started POST "/coaches" for ::1 at 2020-01-30 19:24:15 +0000
+Processing by CoachesController#create as JSON
+  Parameters: {"coach"=>{"first_name"=>"test1", "last_name"=>"test1", "password"=>"[FILTERED]", "email"=>"test1"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/coaches_controller.rb:22:in `create'
+  [1m[36mCoach Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = $1 LIMIT $2[0m  [["email", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:22:in `create'
+  [1m[36mCoach Create (1.5ms)[0m  [1m[32mINSERT INTO "coaches" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "test1"], ["last_name", "test1"], ["email", "test1"], ["password_digest", "$2a$12$wEEdREVB2NeFfeqEhwLvc.7AD8yA.kcYM1f0r1j/Mw1yRq4QgpPO2"], ["created_at", "2020-01-30 19:24:15.419861"], ["updated_at", "2020-01-30 19:24:15.419861"]]
+  ↳ app/controllers/coaches_controller.rb:22:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/coaches_controller.rb:22:in `create'
+  [1m[36mCoach Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = $1 AND "coaches"."id" != $2 LIMIT $3[0m  [["email", "test1"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:23:in `create'
+[active_model_serializers] Rendered CoachSerializer with ActiveModelSerializers::Adapter::Attributes (0.42ms)
+Completed 200 OK in 242ms (Views: 3.5ms | ActiveRecord: 11.6ms | Allocations: 10506)
+
+
+Started POST "/coach/login" for ::1 at 2020-01-30 19:24:31 +0000
+Processing by CoachesController#login as JSON
+  Parameters: {"email"=>"test1", "password"=>"[FILTERED]", "coach"=>{"email"=>"test1"}}
+  [1m[36mCoach Load (0.4ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = $1 LIMIT $2[0m  [["email", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:3:in `login'
+[active_model_serializers] Rendered CoachSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 217ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1147)
+
+
+Started POST "/athlete/login" for ::1 at 2020-01-30 19:34:08 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mAthlete Load (0.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (1.63ms)
+Completed 200 OK in 224ms (Views: 3.8ms | ActiveRecord: 0.9ms | Allocations: 1104)
+
+
+Started POST "/coach/login" for ::1 at 2020-01-30 19:34:25 +0000
+Processing by CoachesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "coach"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mCoach Load (0.5ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:3:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 401 Unauthorized in 235ms (Views: 15.4ms | ActiveRecord: 0.5ms | Allocations: 2782)
+
+
+Started POST "/coach/login" for ::1 at 2020-01-30 19:34:27 +0000
+Processing by CoachesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "coach"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mCoach Load (0.4ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:3:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 216ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 756)
+
+
+Started POST "/coach/login" for ::1 at 2020-01-30 19:34:27 +0000
+Processing by CoachesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "coach"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mCoach Load (0.3ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:3:in `login'
+Started POST "/coach/login" for ::1 at 2020-01-30 19:34:28 +0000
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 430ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1301)
+
+
+Processing by CoachesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "coach"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mCoach Load (0.8ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:3:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 401 Unauthorized in 265ms (Views: 0.6ms | ActiveRecord: 1.3ms | Allocations: 859)
+
+
+Started POST "/coach/login" for ::1 at 2020-01-30 19:34:34 +0000
+Processing by CoachesController#login as JSON
+  Parameters: {"email"=>"test1", "password"=>"[FILTERED]", "coach"=>{"email"=>"test1"}}
+  [1m[36mCoach Load (0.6ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = $1 LIMIT $2[0m  [["email", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:3:in `login'
+[active_model_serializers] Rendered CoachSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 200 OK in 219ms (Views: 1.2ms | ActiveRecord: 0.6ms | Allocations: 1019)
+
+
+Started POST "/athlete/login" for ::1 at 2020-01-30 22:50:09 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mAthlete Load (1.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (1.73ms)
+Completed 200 OK in 226ms (Views: 4.1ms | ActiveRecord: 1.3ms | Allocations: 1104)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:50:13 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.88ms)
+Completed 200 OK in 7ms (Views: 1.2ms | ActiveRecord: 1.6ms | Allocations: 993)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:50:36 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 1.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:50:42 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (3.2ms)
+Completed 200 OK in 9ms (Views: 3.6ms | ActiveRecord: 1.0ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:50:45 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.99ms)
+Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 0.4ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:51:48 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 12ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:51:52 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 1.0ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:51:55 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.83ms)
+Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 1.0ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:52:14 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.8ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.8ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:52:24 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (2.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 2.0ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:52:26 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.44ms)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:28 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.46ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:35 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:39 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.8ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 1.8ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:40 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:40 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:41 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (1.0ms)
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 1.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:42 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:42 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 1.4ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:53:42 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started POST "/athlete/login" for ::1 at 2020-01-30 22:53:50 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 226ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1020)
+
+
+Started POST "/athlete/login" for ::1 at 2020-01-30 22:54:48 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 218ms (Views: 0.8ms | ActiveRecord: 0.4ms | Allocations: 1020)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:55:15 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (1.23ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.5ms | Allocations: 990)
+
+
+Started POST "/athlete/login" for ::1 at 2020-01-30 22:55:50 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mAthlete Load (0.8ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 291ms (Views: 0.8ms | ActiveRecord: 0.8ms | Allocations: 1020)
+
+
+Started POST "/athlete/login" for ::1 at 2020-01-30 22:58:11 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"farisaziz12@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"farisaziz12@gmail.com"}}
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "farisaziz12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 218ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1020)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:58:12 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.93ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:58:13 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 22:58:22 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:01:21 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.8ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.8ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:01:37 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:01:56 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:02:05 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.9ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.58ms)
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 1.9ms | Allocations: 990)
+
+
+Started POST "/athlete/login" for ::1 at 2020-01-30 23:02:19 +0000
+Processing by AthletesController#login as JSON
+  Parameters: {"email"=>"john@gmail.com", "password"=>"[FILTERED]", "athlete"=>{"email"=>"john@gmail.com"}}
+  [1m[36mAthlete Load (0.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" = $1 LIMIT $2[0m  [["email", "john@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:3:in `login'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 221ms (Views: 7.3ms | ActiveRecord: 0.5ms | Allocations: 1020)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:02:47 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 990)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:02:50 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.46ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 990)
+
+
+  [1m[36mAthlete Load (0.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" ORDER BY "athletes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mAthlete Load (0.7ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" ORDER BY "athletes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mWorkout Load (4.0ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."athlete_id" = $1 LIMIT $2[0m  [["athlete_id", 1], ["LIMIT", 11]]
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:08:18 +0000
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (2.87ms)
+Completed 200 OK in 62ms (Views: 22.1ms | ActiveRecord: 7.9ms | Allocations: 11233)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:08:21 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1008)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:08:24 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 1.1ms | Allocations: 1008)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:08:29 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1008)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:08:29 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (0.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:14:in `workouts'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.6ms | Allocations: 1175)
+
+
+  
+NoMethodError (undefined method `workouts' for nil:NilClass):
+  
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:08:59 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1007)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:08:59 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:14:in `workouts'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.3ms | Allocations: 1148)
+
+
+  
+NoMethodError (undefined method `workouts' for nil:NilClass):
+  
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:09:23 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 989)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:09:23 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (0.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:14:in `workouts'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.5ms | Allocations: 1150)
+
+
+  
+NoMethodError (undefined method `workouts' for nil:NilClass):
+  
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:11:03 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (2.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (2.02ms)
+Completed 200 OK in 38ms (Views: 5.4ms | ActiveRecord: 2.1ms | Allocations: 989)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:11:03 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (1.7ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+  [1m[36mAthlete Load (1.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:14:in `workouts'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 2.8ms | Allocations: 1765)
+
+
+  
+NoMethodError (undefined method `workouts' for nil:NilClass):
+  
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:11:16 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (1.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 1.2ms | Allocations: 989)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:11:16 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:14:in `workouts'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.7ms | Allocations: 1768)
+
+
+  
+NoMethodError (undefined method `workouts' for nil:NilClass):
+  
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:12:27 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 28ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 991)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:12:27 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:14:in `workouts'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.7ms | Allocations: 1766)
+
+
+  
+NoMethodError (undefined method `workouts' for nil:NilClass):
+  
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:12:29 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 989)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:12:29 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (2.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:14:in `workouts'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 2.5ms | Allocations: 1768)
+
+
+  
+NoMethodError (undefined method `workouts' for nil:NilClass):
+  
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:12:35 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.54ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 989)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:12:36 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/athletes_controller.rb:14:in `workouts'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.5ms | Allocations: 1765)
+
+
+  
+NoMethodError (undefined method `workouts' for nil:NilClass):
+  
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:14:33 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (0.44ms)
+Completed 200 OK in 48ms (Views: 5.4ms | ActiveRecord: 11.9ms | Allocations: 8689)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:14:34 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+Completed 500 Internal Server Error in 9836ms (ActiveRecord: 0.3ms | Allocations: 45922)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `workouts'
+app/controllers/athletes_controller.rb:15:in `workouts'
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:14:49 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (13.14ms)
+Completed 200 OK in 212ms (Views: 28.2ms | ActiveRecord: 11.0ms | Allocations: 1406723)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:14:51 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (0.8ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+  [1m[36mWorkout Load (1.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."athlete_id" = $1[0m  [["athlete_id", 1]]
+  ↳ app/controllers/athletes_controller.rb:15:in `workouts'
+No serializer found for resource: #<Workout id: 1, name: "Fran", wod_type: "Couplet", category: "Weightlifting", score: "6:54", date: "2020-01-30", rep_scheme: "21-15-9", coach_id: 1, athlete_id: 1, affiliate_id: nil, created_at: "2020-01-30 09:39:39", updated_at: "2020-01-30 09:39:39">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Workout::ActiveRecord_Associations_CollectionProxy (9.1ms)
+Completed 200 OK in 293ms (Views: 214.2ms | ActiveRecord: 8.0ms | Allocations: 1979469)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:15:46 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (0.9ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (34.47ms)
+Completed 200 OK in 219ms (Views: 179.6ms | ActiveRecord: 0.9ms | Allocations: 355764)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:15:47 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (1.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+  [1m[36mWorkout Load (0.9ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."athlete_id" = $1[0m  [["athlete_id", 1]]
+  ↳ app/controllers/athletes_controller.rb:15:in `workouts'
+No serializer found for resource: #<Workout id: 1, name: "Fran", wod_type: "Couplet", category: "Weightlifting", score: "6:54", date: "2020-01-30", rep_scheme: "21-15-9", coach_id: 1, athlete_id: 1, affiliate_id: nil, created_at: "2020-01-30 09:39:39", updated_at: "2020-01-30 09:39:39">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Workout::ActiveRecord_Associations_CollectionProxy (28.38ms)
+Completed 200 OK in 570ms (Views: 166.5ms | ActiveRecord: 2.0ms | Allocations: 695307)
+
+
+Started GET "/athlete/validate" for ::1 at 2020-01-30 23:16:13 +0000
+Processing by AthletesController#validate as */*
+  [1m[36mAthlete Load (4.9ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+[active_model_serializers] Rendered AthleteSerializer with ActiveModelSerializers::Adapter::Attributes (14.18ms)
+Completed 200 OK in 52ms (Views: 23.1ms | ActiveRecord: 4.9ms | Allocations: 384049)
+
+
+Started GET "/athlete/workouts" for ::1 at 2020-01-30 23:16:13 +0000
+Processing by AthletesController#workouts as */*
+  [1m[36mAthlete Load (1.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `set_current_user'
+  [1m[36mWorkout Load (8.8ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."athlete_id" = $1[0m  [["athlete_id", 1]]
+  ↳ app/controllers/athletes_controller.rb:15:in `workouts'
+No serializer found for resource: #<Workout id: 1, name: "Fran", wod_type: "Couplet", category: "Weightlifting", score: "6:54", date: "2020-01-30", rep_scheme: "21-15-9", coach_id: 1, athlete_id: 1, affiliate_id: nil, created_at: "2020-01-30 09:39:39", updated_at: "2020-01-30 09:39:39">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Workout::ActiveRecord_Associations_CollectionProxy (11.32ms)
+Completed 200 OK in 264ms (Views: 134.4ms | ActiveRecord: 10.4ms | Allocations: 755875)
+
+
