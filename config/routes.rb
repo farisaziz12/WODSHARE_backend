@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   post '/athletes', to: 'athletes#create'
   post '/coaches', to: 'coaches#create'
   get '/athlete/workouts', to: 'athletes#workouts'
+  get '/coach/athletes', to: 'coaches#athletes'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

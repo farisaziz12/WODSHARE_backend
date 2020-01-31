@@ -44,7 +44,7 @@ faris = Coach.create(first_name: "Faris", last_name: "Aziz", email: "farisaziz12
 js = Athlete.create(first_name: "John", last_name: "Smith", email: "john@gmail.com", password: "johnsmith", coach: faris)
 
 # Workout Seeds
-wod1 = Workout.create(name: "Fran", wod_type: "Couplet", rep_scheme: "21-15-9", category: "Weightlifting", date: Date.today, score: "6:54", coach: faris, athlete: js)
+wod1 = Workout.create(name: "Fran", wod_type: "Couplet", rep_scheme: "21-15-9", workout: "For Time: \n 21-15-9 \n -Thrusters \n -Pull-ups", category: "Weightlifting", date: Date.today, score: "6:54", coach: faris, athlete: js)
 
 # WorkoutMovements
 

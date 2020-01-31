@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_01_28_132327) do
     t.string "score"
     t.date "date"
     t.string "rep_scheme"
+    t.string "workout"
     t.bigint "coach_id"
     t.bigint "athlete_id"
     t.bigint "affiliate_id"

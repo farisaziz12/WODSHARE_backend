@@ -23,10 +23,18 @@ class CoachesController < ApplicationController
         if coach.valid?
           render json: coach
         else
-            byebug
           render json: {message: coach.errors.full_messages[0]}, status: :not_acceptable
         end 
     end
+
+    def athletes
+        if @current_user.athletes
+          render json: @current_user.athletes
+        else 
+          render json: { error: "No Athletes" }, status: 404
+        end
+    end
+
 
 
     def user_params
