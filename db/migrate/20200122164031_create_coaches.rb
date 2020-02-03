@@ -5,6 +5,7 @@ class CreateCoaches < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.string :email
       t.string :password_digest
+      t.date :date_of_birth
       t.string :account_type, :null => false, :default => 'coach'
       t.integer :affiliate_id
 
