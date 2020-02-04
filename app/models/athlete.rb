@@ -5,6 +5,6 @@ class Athlete < ApplicationRecord
   validates :email, uniqueness: true
 
   def token
-    JWT.encode({ athlete_id: self.id }, ENV['NUTRI'])
-end
+    JWT.encode({ athlete_id: self.id, account_type: self.account_type }, ENV['NUTRI'])
+  end
 end

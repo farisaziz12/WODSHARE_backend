@@ -17,8 +17,10 @@ ActiveRecord::Schema.define(version: 2020_01_28_132327) do
 
   create_table "affiliates", force: :cascade do |t|
     t.string "name"
+    t.string "email"
     t.string "location"
     t.string "password_digest"
+    t.string "account_type", default: "affiliate", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,6 +30,13 @@ ActiveRecord::Schema.define(version: 2020_01_28_132327) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
+    t.date "date_of_birth"
+    t.integer "deadlift"
+    t.integer "backsquat"
+    t.integer "strict_press"
+    t.integer "clean_and_jerk"
+    t.integer "snatch"
+    t.string "account_type", default: "athlete", null: false
     t.bigint "coach_id"
     t.bigint "affiliate_id"
     t.datetime "created_at", precision: 6, null: false
@@ -41,6 +50,8 @@ ActiveRecord::Schema.define(version: 2020_01_28_132327) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
+    t.date "date_of_birth"
+    t.string "account_type", default: "coach", null: false
     t.integer "affiliate_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -94,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_01_28_132327) do
     t.string "score"
     t.date "date"
     t.string "rep_scheme"
+    t.string "workout"
     t.bigint "coach_id"
     t.bigint "athlete_id"
     t.bigint "affiliate_id"
