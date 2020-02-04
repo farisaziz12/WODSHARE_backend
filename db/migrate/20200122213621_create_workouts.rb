@@ -7,6 +7,7 @@ class CreateWorkouts < ActiveRecord::Migration[6.0]
       t.string :score
       t.date :date
       t.string :rep_scheme
+      t.string :workout
       t.references :coach, foreign_key: true
       t.references :athlete, foreign_key: true
       t.references :affiliate, foreign_key: true

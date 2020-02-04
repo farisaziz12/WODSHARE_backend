@@ -4,18 +4,42 @@ class AthletesController < ApplicationController
         if athlete && athlete.authenticate(params[:password])
           render json: athlete
 
-        #   { token: issue_token({ id: athlete.id }), athlete: athlete }
+          { token: issue_token({ id: athlete.id, account_type: athlete.account_type }), athlete: athlete }
         else
           render json: { error: "Email/password combination is invalid." }, status: 401
         end
       end
 
-      def validate
+    def workouts
+        if @current_user.workouts
+          render json: @current_user.workouts
+        else 
+          render json: { error: "No Workouts" }, status: 404
+        end
+    end
+
+    def validate
         if logged_in?
             render json: @current_user
         else
             render json: { errors: ["Not Logged in"] }, status: :not_acceptable
         end
+    end
+
+
+    def create
+      athlete = Athlete.create(user_params)
+      if athlete.valid?
+        render json: athlete
+      else
+        render json: {message: athlete.errors.full_messages[0]}, status: :not_acceptable
+      end 
+    end
+
+    private
+
+    def user_params
+      params.require(:athlete).permit(:email, :password, :first_name, :last_name)
     end
 
 end
