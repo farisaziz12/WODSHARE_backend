@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   get '/coach/athletes', to: 'coaches#athletes'
   post '/workouts', to: 'workouts#create'
   patch '/workouts/:id', to: 'workouts#update'
+  patch '/athletes/:id', to: 'athletes#update'
+  post '/athletes/findcoach/:id', to: 'athletes#find_coach'
+  delete '/athletes/delete/:id', to: 'athletes#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
