@@ -19,11 +19,16 @@ class WorkoutsController < ApplicationController
     end 
   end
 
+  def destroy
+    workout = Workout.find(params[:id])
+    workout.destroy
+  end
+
 
   private
 
   def workout_params
-    params.require(:workout).permit(:score, :name, :wod_type, :category, :workout, :athlete_id, :date)
+    params.require(:workout).permit(:score, :name, :wod_type, :category, :workout, :coach_id, :athlete_id, :date)
   end
 
 end

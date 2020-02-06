@@ -18,6 +18,15 @@ class CoachesController < ApplicationController
         end
     end
 
+    def athlete_workouts
+      athlete = Athlete.find(params[:id])
+      if athlete.workouts
+        render json: athlete.workouts
+      else 
+        render json: { error: "No Workouts" }, status: 404
+      end
+  end
+
     def create
         coach = Coach.create(user_params)
         if coach.valid?
@@ -33,6 +42,18 @@ class CoachesController < ApplicationController
         else 
           render json: { error: "No Athletes" }, status: 404
         end
+    end
+
+    def find_athlete
+      athlete = Athlete.find_by(email: params[:athlete_email])
+      coach = Coach.find(params[:id])
+      if athlete
+        athlete.update(coach_id: coach.id)
+        render json: athlete
+      else
+        render json: {message: "Athlete not found. Please try again"}, status: 404
+      end
+      
     end
 
 
