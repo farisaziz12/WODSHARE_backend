@@ -60,7 +60,7 @@ class AthletesController < ApplicationController
 
     def remove_coach
       athlete = Athlete.find(params[:id])
-      athlete.update(coach_id: null)
+      athlete.update(coach_id: nil)
     end
 
     
