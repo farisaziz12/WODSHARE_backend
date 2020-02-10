@@ -61,6 +61,7 @@ class AthletesController < ApplicationController
     def remove_coach
       athlete = Athlete.find(params[:id])
       athlete.update(coach_id: nil)
+      render json: athlete
     end
 
     
