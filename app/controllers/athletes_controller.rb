@@ -58,6 +58,11 @@ class AthletesController < ApplicationController
         
     end
 
+    def remove_coach
+      athlete = Athlete.find(params[:id])
+      athlete.update(coach_id: null)
+    end
+
     
     def destroy
       athlete = Athlete.find(params[:id])

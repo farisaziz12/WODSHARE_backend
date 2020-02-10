@@ -58,6 +58,7 @@ class CoachesController < ApplicationController
 
 
 
+
     def user_params
         params.require(:coach).permit(:email, :password, :first_name, :last_name)
     end

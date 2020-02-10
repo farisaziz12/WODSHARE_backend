@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   post '/coaches/findathlete/:id', to: 'coaches#find_athlete'
   delete '/athletes/delete/:id', to: 'athletes#destroy'
   delete '/workouts/delete/:id', to: 'workouts#destroy'
+  post '/athletes/removecoach/:id', to: 'athletes#remove_coach'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
