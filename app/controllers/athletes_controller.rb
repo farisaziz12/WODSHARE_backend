@@ -73,7 +73,7 @@ class AthletesController < ApplicationController
     private
 
     def user_params
-      params.require(:athlete).permit(:coach_email, :email, :password, :first_name, :last_name, :deadlift, :strict_press, :clean_and_jerk, :backsquat, :snatch)
+      params.require(:athlete).permit( :coach_email, :email, :password, :first_name, :last_name, :deadlift, :strict_press, :clean_and_jerk, :backsquat, :snatch)
     end
 
 end
